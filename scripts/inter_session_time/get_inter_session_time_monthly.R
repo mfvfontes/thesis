@@ -1,6 +1,7 @@
 require("RPostgreSQL")
 
 load("df_inter_session.Rda")
+
 pw <- {
   "y7dWwByZLWso"
 }
@@ -13,13 +14,11 @@ con <- dbConnect(drv, dbname = "sensemycity",
 
 df_inter_session_way_id <- data.frame()
 
-list_way_ids <- df_inter_session[1:38, 1]
+list_way_ids <- df_inter_session[1:19, 1]
 
 counter <- 0
 
 set.seed(42)
-
-#c1 <- rainbow(19)
 
 rdm_colors <- c()
 
@@ -41,10 +40,6 @@ for(way_id in list_way_ids) {
   
   query <- paste0(query, " ORDER BY nextSeconds")
   
-  #print(query)
-  
-  #date_names <- c("1/Apr", )
-  
   df_inter_session_diff <- dbGetQuery(con, query)
   
   df_inter_session_diff$diff <- df_inter_session_diff$diff/60 
@@ -53,10 +48,10 @@ for(way_id in list_way_ids) {
   
   date_names <- c("1/Apr", "7/Apr", "13/Apr", "19/Apr", "25/Apr", "30/Apr")
   
-  #plot(df_inter_session_diff, main = plot_name, type="o", xlab = "Day", xaxt="n", xlim = c(1459468800, 1462060799), ylab = "IST Difference", ylim = c(0, 12*60), col = rdm_color)
-  #axis(1, at=c(1459512000, 1460030400, 1460548800, 1461067200, 1461585600, 1462017600), labels=date_names)
+  plot(df_inter_session_diff, main = plot_name, type="o", xlab = "Day", xaxt="n", xlim = c(1459468800, 1462060799), ylab = "IST Difference", ylim = c(0, 12*60), col = rdm_color)
+  axis(1, at=c(1459512000, 1460030400, 1460548800, 1461067200, 1461585600, 1462017600), labels=date_names)
   
-  boxplot(df_inter_session_diff$diff, main = plot_name, ylab = "IST Difference (Minutes)", ylim = c(0, 30+counter), boxwex = 0.5)
+  #boxplot(df_inter_session_diff$diff, main = plot_name, ylab = "IST Difference (Minutes)", ylim = c(0, 30+counter), boxwex = 0.5)
   
   counter <- counter + 15
   

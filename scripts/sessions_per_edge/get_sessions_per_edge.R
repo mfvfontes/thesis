@@ -13,7 +13,7 @@ con <- dbConnect(drv, dbname = "sensemycity",
 df_sessions_per_edge <- data.frame()
 
 df_sessions_per_edge <- dbGetQuery(con, "SELECT way_id, COUNT(DISTINCT session_id) AS sessions
-                                   FROM marciofontes.osmlocation
+                                   FROM marciofontes.osmlocation_april
                                    GROUP BY way_id
                                    ORDER BY sessions DESC")
 
