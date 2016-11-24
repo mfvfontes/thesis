@@ -12,7 +12,7 @@ con <- dbConnect(drv, dbname = "sensemycity",
 
 df_inter_session_way_id <- data.frame()
 
-list_way_ids <- df_inter_session[1:19, 1]
+list_way_ids <- df_inter_session[1:14, 1]
 
 par(mfrow=c(1,1))
 

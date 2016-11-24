@@ -36,7 +36,7 @@ while(counter < 720) {
   
 }
 
-list_way_ids <- df_inter_session[1:19, 1]
+list_way_ids <- df_inter_session[1:14, 1]
 
 counter <- 0
 
@@ -87,7 +87,7 @@ for(way_id in list_way_ids) {
   
   plot_name <- paste0("IST Variations (1st Week): Way_ID - ", way_id)
   
-  png(paste0(way_id, "_part1.png"), width=2500, height = 1500)
+  png(paste0(paste0(way_id, "/"), paste0(way_id, "_part1.png")), width=2500, height = 1500)
   par(mfrow=c(2,1))
   
   plot(x = df_inter_session_diff_1stweek$nextseconds, y = df_inter_session_diff_1stweek$diff/60, main = plot_name, type="o", xlab = "Day (Hour)", xaxt="n", xlim = c(1459468800, limits[168]), ylab = "IST Difference", ylim = c(0, 12*60), col=rdm_color)
@@ -102,7 +102,7 @@ for(way_id in list_way_ids) {
   
   plot_name <- paste0("IST Variations (3rd Week): Way_ID - ", way_id)
   
-  png(paste0(way_id, "_part2.png"), width=2500, height = 1500)
+  png(paste0(paste0(way_id, "/"), paste0(way_id, "_part2.png")), width=2500, height = 1500)
   par(mfrow=c(2,1))
   
   plot(x = df_inter_session_diff_3rdweek$nextseconds, y = df_inter_session_diff_3rdweek$diff/60, main = plot_name, type="o", xlab = "Day (Hour)", xaxt="n", xlim = c(limits[337], limits[504]), ylab = "IST Difference", ylim = c(0, 12*60), col=rdm_color)
@@ -117,7 +117,7 @@ for(way_id in list_way_ids) {
   
   plot_name <- paste0("IST Variations (5th Week): Way_ID - ", way_id)
   
-  png(paste0(way_id, "_part3.png"), width=2500, height = 1500)
+  png(paste0(paste0(way_id, "/"), paste0(way_id, "_part3.png")), width=2500, height = 1500)
   par(mfrow=c(1,1))
   
   plot(x = df_inter_session_diff_5thweek$nextseconds, y = df_inter_session_diff_5thweek$diff/60, main = plot_name, type="o", xlab = "Day (Hour)", xaxt="n", xlim = c(limits[673], limits[720]), ylab = "IST Difference", ylim = c(0, 12*60), col=rdm_color)

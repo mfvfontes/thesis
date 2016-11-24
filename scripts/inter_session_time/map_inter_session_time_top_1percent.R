@@ -14,7 +14,7 @@ con_osm <- dbConnect(drv, dbname = "openstreetmap",
                      host = "localhost", port = 15432,
                      user = "marciofontes", password = pw)
 
-list_inter_session <- df_inter_session[1:19, 1]
+list_inter_session <- df_inter_session[1:14, 1]
 
 m <- leaflet() %>% setView(lng=-8.61419, lat=41.16311, zoom = 13)
 m <- addTiles(m)
